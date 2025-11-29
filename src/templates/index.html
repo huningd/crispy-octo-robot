@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NLWeb Example</title>
+</head>
+<body>
+    <h1>NLWeb Example</h1>
+    <p>Ask a question about the content of the <a href="https://huningd.github.io/dev-blog/">Dex Dev Blog</a>.</p>
+
+    <form action="/search" method="post">
+        <input type="text" name="query" size="50" value="{{ query if query else '' }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h2>Results</h2>
+        {% for post in results %}
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p><em>Published: {{ post.pub_date }}</em></p>
+            <p>{{ post.content }}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>
